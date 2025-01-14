@@ -33,7 +33,7 @@ jobs:
           GOARCH: ${{ matrix.goarch }}
         run: |
           cd collector
-          GOBUILD=GO111MODULE=on CGO_ENABLED=0 installsuffix=cgo go build -trimpath -o collector
+          GOBUILD=GO111MODULE=on CGO_ENABLED=0 installsuffix=cgo go build -trimpath -ldflags "-s -w" -o collector
           zip collector-${{ matrix.arch }}.zip collector config.yaml
 
       - name: Upload Release Asset
