@@ -16,6 +16,10 @@ COPY --from=otel /app/collector /opt/extensions/collector
 COPY --from=otel /app/config.yaml /opt/collector-config/config.yaml
 ```
 
+## References
+
+* [Sending traces to X-Ray with OpenTelemetry from a Lambda function deployed in a container](https://aws.amazon.com/jp/blogs/news/sending-traces-from-containerized-lambda-to-xray/)
+
 The below is the original README.md.
 
 ---
