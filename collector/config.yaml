@@ -8,13 +8,14 @@ receivers:
 
 exporters:
   debug:
-    verbosity: detailed
+    verbosity: basic
+  awsxray:
 
 service:
   pipelines:
     traces:
       receivers: [otlp]
-      exporters: [debug]
+      exporters: [awsxray]
     metrics:
       receivers: [otlp]
       exporters: [debug]
