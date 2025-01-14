@@ -1,3 +1,25 @@
+# OpenTelemetry Lambda for Container
+
+## Usage
+
+```Dockerfile
+# add this intermediate container
+FROM alpine AS otel
+WORKDIR /app
+RUN wget -O collector.zip https://github.com/tmokmss/opentelemetry-lambda-xray/releases/latest/download/collector-arm64.zip
+RUN unzip -j collector.zip
+
+# Here is your main Lambda container
+FROM node:22
+# add the below two lines:
+COPY --from=otel /app/collector /opt/extensions/collector
+COPY --from=otel /app/config.yaml /opt/collector-config/config.yaml
+```
+
+The below is the original README.md.
+
+---
+
 # OpenTelemetry Lambda
 
 ![GitHub Java Workflow Status](https://img.shields.io/github/actions/workflow/status/open-telemetry/opentelemetry-lambda/ci-java.yml?branch%3Amain&label=CI%20%28Java%29&style=for-the-badge)
