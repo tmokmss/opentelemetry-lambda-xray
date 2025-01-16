@@ -37,7 +37,7 @@ jobs:
           mkdir extensions collector-config
           mv collector extensions/
           mv config.yaml collector-config/
-          zip -r collector-${{ matrix.arch }}.zip extension collector-config
+          zip -r collector-${{ matrix.arch }}.zip extensions collector-config
 
       - name: Upload Release Asset
         uses: actions/upload-release-asset@v1
